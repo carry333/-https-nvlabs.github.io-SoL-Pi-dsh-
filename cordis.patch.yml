@@ -1,0 +1,15 @@
+# dsh-solpack bundle patch.
+# Inserts one row into the profile root. Removing the row (or disabling it in
+# cordis.patch.yml) turns every mechanism off; there is no other entry point.
+- insert:
+    - id: solpack
+      name: dsh-solpack
+      config:
+        # Oversized plain-text results are packed above this many UTF-8 bytes.
+        maxInlineBytes: 6000
+        # Results this large get an evidence receipt instead of a plain preview.
+        reduceAboveBytes: 48000
+        # Inline preview budget (head + tail) for a packed result.
+        previewBytes: 2000
+        # Byte cap for one `solpack` recall reply.
+        maxReadBytes: 16000
